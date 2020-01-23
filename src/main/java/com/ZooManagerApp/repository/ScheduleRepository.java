@@ -1,0 +1,8 @@
+package com.ZooManagerApp.repository;
+
+import com.ZooManagerApp.model.Schedule;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
+
+}
