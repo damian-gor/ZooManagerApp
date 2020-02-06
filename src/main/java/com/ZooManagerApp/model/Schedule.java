@@ -1,7 +1,10 @@
 package com.ZooManagerApp.model;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,6 +16,9 @@ import java.util.Date;
 @Table(name = "Schedule")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
