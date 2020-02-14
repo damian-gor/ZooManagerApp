@@ -38,16 +38,16 @@ public class DbInitializer implements CommandLineRunner {
         Species species5 = new Species(5l, "tortoise", "Tortoise's description", "Mark B", 11, 2l);
         Species species6 = new Species(6l, "lizard", "Lizard's description", "Peter H", 18, 2l);
 
-        Schedule schedule1 = new Schedule(1l, null,new Date(2020, 2, 10),null, "Use more aggressive cleaning supplies", 1l, null, null);
-        Schedule schedule2 = new Schedule(2l, new Date(2020, 2, 12),null,null, "Remember to add supplements", 1l, null, null);
-        Schedule schedule3 = new Schedule(3l, new Date(2020, 2, 14),null,null, "Remember to add supplements", 2l, null, null);
-        Schedule schedule4 = new Schedule(4l, null,null,new Date(2020, 2, 14), "Performance for kids", 3l, null, null);
-        Schedule schedule5 = new Schedule(5l, null, new Date(2020, 2, 8),null, "Details", 3l, null, null);
-        Schedule schedule6 = new Schedule(6l, null, null,new Date(2020, 3, 8), "Details", 4l, null, null);
-        Schedule schedule7 = new Schedule(7l, null, new Date(2020, 2, 8),null, "Details", 4l, null, null);
-        Schedule schedule8 = new Schedule(8l, new Date(2020, 2, 15), null,null, "Details", 5l, null, null);
-        Schedule schedule9 = new Schedule(9l, null, new Date(2020, 2, 9),null, "Details", 5l, null, null);
-        Schedule schedule10 = new Schedule(10l, null, new Date(2020, 2, 10),null, "Details", 6l, null, null);
+        Schedule schedule1 = new Schedule(1l, null, new Date(120,1,1), null, "Use more aggressive cleaning supplies", 1l, null, null);
+        Schedule schedule2 = new Schedule(2l, new Date(120, 2, 12),null,null, "Remember to add supplements", 1l, null, null);
+        Schedule schedule3 = new Schedule(3l, new Date(120, 2, 14),null,null, "Remember to add supplements", 2l, null, null);
+        Schedule schedule4 = new Schedule(4l, null,null,new Date(120, 2, 14), "Performance for kids", 3l, null, null);
+        Schedule schedule5 = new Schedule(5l, null, new Date(120, 2, 8),null, "Details", 3l, null, null);
+        Schedule schedule6 = new Schedule(6l, null, null,new Date(120, 3, 8), "Details", 4l, null, null);
+        Schedule schedule7 = new Schedule(7l, null, new Date(120, 2, 8),null, "Details", 4l, null, null);
+        Schedule schedule8 = new Schedule(8l, new Date(120, 2, 15), null,null, "Details", 5l, null, null);
+        Schedule schedule9 = new Schedule(9l, null, new Date(120, 2, 9),null, "Details", 5l, null, null);
+        Schedule schedule10 = new Schedule(10l, null, new Date(120, 2, 10),null, "Details", 6l, null, null);
 
 
         this.divisionRepository.save(division1);

@@ -1,4 +1,4 @@
-package com.ZooMenagerApp;
+package com.ZooManagerApp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

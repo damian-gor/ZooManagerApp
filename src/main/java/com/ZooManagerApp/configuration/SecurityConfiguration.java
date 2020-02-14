@@ -1,7 +1,9 @@
-package com.ZooManagerApp.security;
+package com.ZooManagerApp.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,7 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.naming.AuthenticationException;
 import javax.sql.DataSource;
 
+@Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -20,7 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         try {
             auth.jdbcAuthentication()
-                    .dataSource(dataSource) // jesli mamy jakies zewnetrzne db, mozemy je inject za pośrednictwem tej metody
+                    .dataSource(dataSource)
                     .usersByUsernameQuery("select username,password,enabled "
                             + "from users "
                             + "where username = ?")
@@ -35,10 +39,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic().and()
-                .authorizeRequests()
+        http.csrf().disable();
+        http.httpBasic()
+                .and().authorizeRequests()
                 .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/divisions/**").hasAnyRole("USER","ADMIN")
+                .antMatchers("/divisions").hasAnyRole("ADMIN","USER")
+                .antMatchers("/home").permitAll()
+                .anyRequest().authenticated()
                 .and().formLogin();
     }
 
